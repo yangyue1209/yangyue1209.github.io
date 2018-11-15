@@ -12,7 +12,7 @@
     
     
     
-    <title>Infinity的几个出现场景以及一些简单计算操作的注意事项 | 杨月的个人博客</title>
+    <title>几道有趣的面试题 | 杨月的个人博客</title>
     <link href="”http://yoursite.com“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -196,13 +196,13 @@
         <i class="fa fa-home"></i>
         <a href="http://yoursite.com">杨月的个人博客</a>
         >
-        <span>Infinity的几个出现场景以及一些简单计算操作的注意事项</span>
+        <span>几道有趣的面试题</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/">Infinity的几个出现场景以及一些简单计算操作的注意事项</a>
+                <a href="/2018/11/15/几道有趣的面试题/">几道有趣的面试题</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -210,7 +210,7 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/其他/">其他</a>
+                <a href="/tags/面试题相关/">面试题相关</a>
                 
             </span>
             
@@ -225,7 +225,7 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/">Infinity的几个出现场景以及一些简单计算操作的注意事项</a>
+                    <a href="/2018/11/15/几道有趣的面试题/">几道有趣的面试题</a>
                 </h4>
             </div>
             <p>
@@ -235,7 +235,7 @@
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/其他/">其他</a>
+                <a href="/tags/面试题相关/">面试题相关</a>
                 
                 
                 
@@ -243,33 +243,166 @@
         </center>
     </div>
     <div class="content-article">
-        <h2 id="Infinity的几个出现场景以及一些简单计算操作的注意事项"><a href="#Infinity的几个出现场景以及一些简单计算操作的注意事项" class="headerlink" title="Infinity的几个出现场景以及一些简单计算操作的注意事项"></a>Infinity的几个出现场景以及一些简单计算操作的注意事项</h2><p>Number–js中的内置对象之一 ，在Number中 有这样两个属性：</p>
-<p>MAX_VALUE  =========&gt;&gt;&gt;可表示的最大的数。它的近似值为 1.7976931348623157 x 10的308次方。</p>
-<p>如果 数值超过了计算机可显示的最大数值，则返回Infinity，同理负数返回的为-Infinity；</p>
-<p>MIN_VALUE  =========&gt;&gt;&gt;可表示的最小的正数。</p>
-<p>MIN_VALUE 属性是 JavaScript 中可表示的最小的数（接近 0 ，但不是负数！！！）。它的近似值为 5 x 10的-324次方。</p>
-<p>js中没有无穷小这个概念，所以无法表示比MIN_VALUE 小且大于0的数字，这就是为什么在数学组1/∞可以表示无穷小，但是在计算机中1/Infinity的返回值为0的原因。</p>
-<p>我在下面总结了一些常用的数学计算方法返回值为非正常显示数值的情况：</p>
-<h5 id="1-乘法计算"><a href="#1-乘法计算" class="headerlink" title="1.乘法计算"></a>1.乘法计算</h5><p>①. 如果 操作数都是数值的情况，执行 乘法计算（*）的时候，如果乘积超过了ECMAScript数值的表示范围则返回Infinity或-Infinity；</p>
-<p>②. 如果是Infinity与0相乘，返回结果NaN;</p>
-<p>③.Infinity与非0数值相乘 返回结果为Infinity或-Infinity；</p>
-<p>④.Infinity与Infinity相乘返回结果Infinity；</p>
-<p>⑤.如果一个 操作数为NaN ，则返回结果为NaN（）；</p>
-<p>⑥.如果一个操作数不是数值，则后台会默认调用Number（）隐式转换后操作，然后引用上面的规则。</p>
-<h5 id="2-除法计算"><a href="#2-除法计算" class="headerlink" title="2.除法计算"></a>2.除法计算</h5><p>js中的除法计算与乘法计算相似，唯一注意的是在表示无穷小的时候，因为js中并没有无穷小的概念，所以数学方法中的无穷小=1/无穷大的概念行不通。所以1 / Infinity 的结果为0，除此之外，非零的有限数被0除，结果为Infinity或者-Infinity； </p>
-<h5 id="3-加法计算"><a href="#3-加法计算" class="headerlink" title="3.加法计算"></a>3.加法计算</h5><p>js中简单数据类型应用中，不止Number类型可以进行加法计算，String类型也可以，利用+进行字符串拼接操作，所以在进行加法计算之前一定要分清楚要计算的操作数属于什么类型，然后在进行计算，否则得出的结果天差地别。</p>
-<p>①.Infinity与Infinity相加结果为Infinity；</p>
-<p>②.-Infinity加-Infinity结果为-Infinity；</p>
-<p>③. 需要 注意一点，Infinity与-Infinity相加结果不是0，而是NaN；</p>
-<p>④. 0虽然不分正负，但是在控制台输出的时候会有+0和-0的不一样的显示效果。所以0+0的结果为0，而-0 + -0的结果为-0；</p>
-<p>⑤.另外一个需要注意的地方是如果一个操作数为字符串，则会默认将另外一个数值进行隐式转换然后进行字符串拼接操作。</p>
-<p>⑥.如果第一个操作数为字符串，我们在其前面加上一个+可以尝试将其进行隐式的Number类型转换：</p>
-<p>如：console.log(+”10”)  其输出结果为数字类型的10；</p>
-<p>而如果是console.log(“10”+0) 则结果为字符串类型的100；</p>
-<p>如果是console.log(0+”10”+0)则输出结果为字符串0100；</p>
-<p>⑦.如果有一个操作数为NaN，则返回结果为NaN；</p>
-<h5 id="4-减法计算"><a href="#4-减法计算" class="headerlink" title="4.减法计算"></a>4.减法计算</h5><p>与加法操作类似；</p>
+        <h1 id="几道有趣的面试题"><a href="#几道有趣的面试题" class="headerlink" title="几道有趣的面试题"></a>几道有趣的面试题</h1><ol>
+<li><p>var a;</p>
+<pre><code>var b = a * 0;
 
+if (b == b) {
+
+    console.log(b * 4 + &apos;2&apos; - 0 + 2);
+
+} else {
+
+    console.log(!b * 4 + &apos;2&apos; - 0 + 2);// !b = 1;
+
+}  
+
+ 解答：   a声明为赋值，结果为undefined  b=a*0，undefined*0结果为 NaN ，NaN与NaN不相等故而执行else里的代码  b隐式转换布尔值为false ，而false转换为数字为0，故而!b=1；
+</code></pre></li>
+</ol>
+<p>所以不难得出结果为44.</p>
+<pre><code>  2.
+
+  var obj = {proto : {a:1,b:2}};
+
+  function F () {};
+
+  F.prototype = obj.proto;
+
+  var f = new F();
+
+  obj.proto.c = 3;
+
+  obj.proto = {a:-1,b:-2};
+
+  console.log(f.a);
+
+   console.log(f.c);
+
+   delete F.prototype[&apos;a&apos;];    
+
+    console.log(f.a);
+
+      console.log(obj.proto.a);
+
+解答：  F为构造函数  ，第三行代码将obj的proto属性赋给了F的原型， 而f为F的实例对象，故而f.a结果为obj里的a的值，也就是1；
+</code></pre><p>而复杂数据类型直接传递的是指针，也就是说在obj的proto中加入 属性c，那么F的原型中也会有c属性，故而f.c的值为3；</p>
+<pre><code>    在F的原型中删除了a属性，f为F的实例对象，故而删除 之后f.a的值为undefined；
+
+    而后obj的指针方向发生了改变，所以obj.proto.a的结果为 -1；
+
+        3.
+
+    &lt;ul&gt;
+
+    &lt;li id=&quot;1&quot;&gt;1&lt;/li&gt;
+
+    &lt;li id=&quot;2&quot;&gt;&lt;/li&gt;
+
+    &lt;li id=&quot;3&quot;&gt;1&lt;/li&gt;
+
+    &lt;li id=&quot;4&quot;&gt;&lt;/li&gt;
+
+    &lt;li id=&quot;5&quot;&gt;&lt;/li&gt;
+
+    &lt;li id=&quot;6&quot;&gt;&lt;/li&gt;
+
+    &lt;li id=&quot;7&quot;&gt;1&lt;/li&gt;
+
+&lt;/ul&gt;
+
+    var lis = document.getElementsByTagName(&apos;li&apos;);
+
+    for  (var i = 0; i &lt; lis.length; i++) {
+
+        if (lis[i].innerHTML == &apos;&apos;) {
+
+            lis[i].parentNode.removeChild(lis[i]);
+
+        }
+
+    }
+
+    因为少了一个i--； 所以当i = 0的时候检查失败继续执行，i=1时检查成功删除索引为1的li结构，i从2开始查找 id为5的但是内容为空的li最后被剩下了
+
+      4.输出结果是多少
+
+    ( function test () {
+
+        var  a = b = 5;
+
+        var c = 5, d = 5; e = 5;
+
+        console.log(a)  //自调用  函数内部都是5
+
+        console.log(b)
+
+        console.log(c)
+
+        console.log(d)
+
+        console.log(e)
+
+    })();
+
+        console.log(a)  //报错
+
+        console.log(b)  //隐式全局变量  5
+
+        console.log(c)  //函数外访问不到 所以是报错了
+
+        console.log(d)  //函数外访问不到 所以是报错了
+
+        console.log(e) ////隐式全局变量  5
+
+    5. 输出 结果是什么
+
+    var a = {
+
+        name: &apos;小明&apos;
+
+    };
+
+    var b = a;
+
+    a = {
+
+        name: &apos;小王&apos;
+
+    };
+
+    console.log(a.name);   
+
+    console.log(b.name);  
+
+ a重定向，指针发生了改变，原来的指针复制给了b，所以a.name为小王， b.name为小明
+
+    6.输出 结果是什么
+
+      if (!(&quot;t&quot; in window)) {
+
+       var t = 1;
+
+     }
+
+     console.log(t);
+
+     输出 结果是 undefined
+
+    代码的含义是  如果window里没有t这个 属性就声明t并赋值1  但是  ==&gt; js引擎会将var 提前 那么相当于代码变为
+
+    var t ;
+
+    if (! &apos;t&apos; in window) {
+
+        t = 1;
+
+    }
+
+    console.log(t);
+
+       声明提前之后，if 语句的判断结果为false，所以永远不会执行。故而结果为undefined
+</code></pre>
     </div>
 </article>
 
@@ -424,23 +557,23 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/11/15/几道有趣的面试题/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/11/15/几道有趣的面试题/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/11/15/几道有趣的面试题/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/其他/" style="font-size: 19.622066557160267px;" class="tag-cloud-link">其他</a>
+    <a href="/tags/其他/" style="font-size: 8.648026105510871px;" class="tag-cloud-link">其他</a>
     
-    <a href="/tags/JavaScript/" style="font-size: 17.97995965184861px;" class="tag-cloud-link">JavaScript</a>
+    <a href="/tags/JavaScript/" style="font-size: 13.564434359984402px;" class="tag-cloud-link">JavaScript</a>
     
-    <a href="/tags/面试题相关/" style="font-size: 14.148382512863364px;" class="tag-cloud-link">面试题相关</a>
+    <a href="/tags/面试题相关/" style="font-size: 13.142063656125451px;" class="tag-cloud-link">面试题相关</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">

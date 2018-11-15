@@ -12,7 +12,7 @@
     
     
     
-    <title>Infinity的几个出现场景以及一些简单计算操作的注意事项 | 杨月的个人博客</title>
+    <title>innerHTML与document.createElement的优缺点 | 杨月的个人博客</title>
     <link href="”http://yoursite.com“" rel="”prefetch”">
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -196,13 +196,13 @@
         <i class="fa fa-home"></i>
         <a href="http://yoursite.com">杨月的个人博客</a>
         >
-        <span>Infinity的几个出现场景以及一些简单计算操作的注意事项</span>
+        <span>innerHTML与document.createElement的优缺点</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/">Infinity的几个出现场景以及一些简单计算操作的注意事项</a>
+                <a href="/2018/11/15/innerHTML与document-createElement的优缺点/">innerHTML与document.createElement的优缺点</a>
             </h1>
         </div>
         <div class="tag-article">
@@ -210,7 +210,7 @@
             <span class="label label-gal">
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/其他/">其他</a>
+                <a href="/tags/JavaScript/">JavaScript</a>
                 
             </span>
             
@@ -225,7 +225,7 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/">Infinity的几个出现场景以及一些简单计算操作的注意事项</a>
+                    <a href="/2018/11/15/innerHTML与document-createElement的优缺点/">innerHTML与document.createElement的优缺点</a>
                 </h4>
             </div>
             <p>
@@ -235,7 +235,7 @@
                 
                 <i class="fa fa-tags"></i>
                 
-                <a href="/tags/其他/">其他</a>
+                <a href="/tags/JavaScript/">JavaScript</a>
                 
                 
                 
@@ -243,33 +243,82 @@
         </center>
     </div>
     <div class="content-article">
-        <h2 id="Infinity的几个出现场景以及一些简单计算操作的注意事项"><a href="#Infinity的几个出现场景以及一些简单计算操作的注意事项" class="headerlink" title="Infinity的几个出现场景以及一些简单计算操作的注意事项"></a>Infinity的几个出现场景以及一些简单计算操作的注意事项</h2><p>Number–js中的内置对象之一 ，在Number中 有这样两个属性：</p>
-<p>MAX_VALUE  =========&gt;&gt;&gt;可表示的最大的数。它的近似值为 1.7976931348623157 x 10的308次方。</p>
-<p>如果 数值超过了计算机可显示的最大数值，则返回Infinity，同理负数返回的为-Infinity；</p>
-<p>MIN_VALUE  =========&gt;&gt;&gt;可表示的最小的正数。</p>
-<p>MIN_VALUE 属性是 JavaScript 中可表示的最小的数（接近 0 ，但不是负数！！！）。它的近似值为 5 x 10的-324次方。</p>
-<p>js中没有无穷小这个概念，所以无法表示比MIN_VALUE 小且大于0的数字，这就是为什么在数学组1/∞可以表示无穷小，但是在计算机中1/Infinity的返回值为0的原因。</p>
-<p>我在下面总结了一些常用的数学计算方法返回值为非正常显示数值的情况：</p>
-<h5 id="1-乘法计算"><a href="#1-乘法计算" class="headerlink" title="1.乘法计算"></a>1.乘法计算</h5><p>①. 如果 操作数都是数值的情况，执行 乘法计算（*）的时候，如果乘积超过了ECMAScript数值的表示范围则返回Infinity或-Infinity；</p>
-<p>②. 如果是Infinity与0相乘，返回结果NaN;</p>
-<p>③.Infinity与非0数值相乘 返回结果为Infinity或-Infinity；</p>
-<p>④.Infinity与Infinity相乘返回结果Infinity；</p>
-<p>⑤.如果一个 操作数为NaN ，则返回结果为NaN（）；</p>
-<p>⑥.如果一个操作数不是数值，则后台会默认调用Number（）隐式转换后操作，然后引用上面的规则。</p>
-<h5 id="2-除法计算"><a href="#2-除法计算" class="headerlink" title="2.除法计算"></a>2.除法计算</h5><p>js中的除法计算与乘法计算相似，唯一注意的是在表示无穷小的时候，因为js中并没有无穷小的概念，所以数学方法中的无穷小=1/无穷大的概念行不通。所以1 / Infinity 的结果为0，除此之外，非零的有限数被0除，结果为Infinity或者-Infinity； </p>
-<h5 id="3-加法计算"><a href="#3-加法计算" class="headerlink" title="3.加法计算"></a>3.加法计算</h5><p>js中简单数据类型应用中，不止Number类型可以进行加法计算，String类型也可以，利用+进行字符串拼接操作，所以在进行加法计算之前一定要分清楚要计算的操作数属于什么类型，然后在进行计算，否则得出的结果天差地别。</p>
-<p>①.Infinity与Infinity相加结果为Infinity；</p>
-<p>②.-Infinity加-Infinity结果为-Infinity；</p>
-<p>③. 需要 注意一点，Infinity与-Infinity相加结果不是0，而是NaN；</p>
-<p>④. 0虽然不分正负，但是在控制台输出的时候会有+0和-0的不一样的显示效果。所以0+0的结果为0，而-0 + -0的结果为-0；</p>
-<p>⑤.另外一个需要注意的地方是如果一个操作数为字符串，则会默认将另外一个数值进行隐式转换然后进行字符串拼接操作。</p>
-<p>⑥.如果第一个操作数为字符串，我们在其前面加上一个+可以尝试将其进行隐式的Number类型转换：</p>
-<p>如：console.log(+”10”)  其输出结果为数字类型的10；</p>
-<p>而如果是console.log(“10”+0) 则结果为字符串类型的100；</p>
-<p>如果是console.log(0+”10”+0)则输出结果为字符串0100；</p>
-<p>⑦.如果有一个操作数为NaN，则返回结果为NaN；</p>
-<h5 id="4-减法计算"><a href="#4-减法计算" class="headerlink" title="4.减法计算"></a>4.减法计算</h5><p>与加法操作类似；</p>
+        <h1 id="innerHTML与document-createElement的优缺点"><a href="#innerHTML与document-createElement的优缺点" class="headerlink" title="innerHTML与document.createElement的优缺点"></a>innerHTML与document.createElement的优缺点</h1><h4 id="innerHTML："><a href="#innerHTML：" class="headerlink" title="innerHTML："></a>innerHTML：</h4><h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><pre><code>可以指定位置创建元素
 
+进行复杂结构创建时操作较为简便:
+</code></pre><h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p>覆盖问题(解决不了)：虽然尝试使用+=方式解决，但是只能解决结构的问题，没有获取到所有的事件等内容。</p>
+<p> 性能问题(已解决)：</p>
+<p>假如我们给box内部动态创建200个空div:</p>
+<p>  console.time(‘innerHTML’);</p>
+<pre><code>var box = document.getElementById(&apos;box&apos;);
+
+for (var i = 0; i &lt; 200; i++) {
+
+    box.innerHTML += &apos;  &apos;;
+
+}
+
+console.timeEnd(&apos;innerHTML&apos;);
+</code></pre><p> 通过对比，我们看到innerHTML进行元素创建操作的执行速度慢，具有性能问题。</p>
+<p>上面的小测试创建200个div用时155.400146484375ms</p>
+<pre><code>innerHTML属性执行效率问题的解决方式：
+
+避免使用innerHTML重复执行多次(不在循环中使用即可) (以下两种方式任选其一即可)
+</code></pre><h5 id="1-使用字符串替代执行-2ms左右"><a href="#1-使用字符串替代执行-2ms左右" class="headerlink" title="1 使用字符串替代执行 - 2ms左右"></a>1 使用字符串替代执行 - 2ms左右</h5><pre><code>console.time(&apos;innerHTML&apos;);
+
+var box = document.getElementById(&apos;box&apos;);
+
+var str = &apos;&apos;;
+
+for (var i = 0; i &lt; 200; i++) {
+
+    str += &apos; &apos;;
+
+}
+
+box.innerHTML = str;
+
+console.timeEnd(&apos;innerHTML&apos;);
+</code></pre><h5 id="2-使用数组替代执行-2ms左右"><a href="#2-使用数组替代执行-2ms左右" class="headerlink" title="2 使用数组替代执行 - 2ms左右"></a>2 使用数组替代执行 - 2ms左右</h5><pre><code>console.time(&apos;innerHTML&apos;);
+
+var box = document.getElementById(&apos;box&apos;);
+
+var arr = [];
+
+for (var i = 0; i &lt; 200; i++) {
+
+    arr.push(&apos; &apos;);
+
+}
+
+box.innerHTML = arr.join(&apos;&apos;);
+
+console.timeEnd(&apos;innerHTML&apos;); 
+</code></pre><h4 id="document-createElement-用于创建一个元素"><a href="#document-createElement-用于创建一个元素" class="headerlink" title="document.createElement() - 用于创建一个元素"></a><strong>document.createElement() - 用于创建一个元素</strong></h4><pre><code>- 参数：字符串形式的标签名称
+
+效果：创建的元素默认不在页面中显示，需要根据实际的需求，添加到页面中的某个位置上。
+</code></pre><p>  var box = document.getElementById(‘box’);</p>
+<pre><code> for (var i = 0; i &lt; 200; i++) {   
+
+     var div = document.createElement(&apos;div&apos;);
+
+     box.appendChild(div);
+
+ }
+
+ console.timeEnd(&apos;createElement&apos;); 
+
+用时   4.1279296875ms - 用于与innerHTML做性能对比使用
+</code></pre><p>缺点：</p>
+<pre><code>- 如果使用document.createElement()创建复杂结构，操作较为繁琐
+</code></pre><h5 id="动态创建元素部分的小结："><a href="#动态创建元素部分的小结：" class="headerlink" title="动态创建元素部分的小结："></a>动态创建元素部分的小结：</h5><pre><code>- 使用场景：
+
+    - 如果结构复杂，使用innerHTML
+
+    - 其他情况均可以使用document.createElement()
+
+      - 如果要进行元素创建的结构内部已经具有其他元素，必须document.createElement()
+</code></pre>
     </div>
 </article>
 
@@ -424,23 +473,23 @@
         <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
             <ul class="nav nav-pills pills-gal">
                 <li class="">
-                    <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2018/11/15/innerHTML与document-createElement的优缺点/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 <li class="">
-                    <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2018/11/15/innerHTML与document-createElement的优缺点/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 <li class="">
-                    <a href="/2018/11/15/Infinity的几个出现场景以及一些简单计算操作的注意事项/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2018/11/15/innerHTML与document-createElement的优缺点/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/其他/" style="font-size: 19.622066557160267px;" class="tag-cloud-link">其他</a>
+    <a href="/tags/其他/" style="font-size: 18.815070555555913px;" class="tag-cloud-link">其他</a>
     
-    <a href="/tags/JavaScript/" style="font-size: 17.97995965184861px;" class="tag-cloud-link">JavaScript</a>
+    <a href="/tags/JavaScript/" style="font-size: 14.859821150968791px;" class="tag-cloud-link">JavaScript</a>
     
-    <a href="/tags/面试题相关/" style="font-size: 14.148382512863364px;" class="tag-cloud-link">面试题相关</a>
+    <a href="/tags/面试题相关/" style="font-size: 12.428368834000342px;" class="tag-cloud-link">面试题相关</a>
     
 </div>
                 <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
