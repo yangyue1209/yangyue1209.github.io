@@ -16,7 +16,7 @@
 			})
 			$(".circle").removeClass("open")
 			$(".GalMenu").delay(400).hide(0)
-			audio.pause()
+			// audio.pause()
 			audio.currentTime = 0
 		}
 	})
@@ -78,11 +78,11 @@
 		if ($("#gal").hasClass("open")) {
 			$(".circle").removeClass("open")
 			$(".GalMenu").delay(400).hide(0)
-			audio.pause();
+			// audio.pause();
 			audio.currentTime = 0
 		} else {
 			$(".circle").addClass("open")
-			audio.play()
+			// audio.play()
 		}
 
 	})
